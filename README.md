@@ -117,6 +117,7 @@ In your text editor, open up `config/routes.rb`. Inside the routes `draw` block,
 <details>
   <summary>Hint: `routes.rb` should now look exactly like this...</summary>
   <p>
+  
   ```ruby
   #
   # config/routes.rb
@@ -125,6 +126,7 @@ In your text editor, open up `config/routes.rb`. Inside the routes `draw` block,
 
   end
   ```
+  
   </p>
 </details>
 <br>
@@ -134,6 +136,7 @@ Your routes tell your app how to direct **HTTP requests** to **controller action
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # config/routes.rb
@@ -146,6 +149,7 @@ Your routes tell your app how to direct **HTTP requests** to **controller action
 
   end
   ```
+  
   </p>
 </details>
 
@@ -165,6 +169,7 @@ Next, define the `creatures#index` action in the creatures controller. The varia
 
 <details>
   <summary>Hint:</summary>
+  
   ```ruby
   #
   # app/controllers/creatures_controller.rb
@@ -179,6 +184,7 @@ Next, define the `creatures#index` action in the creatures controller. The varia
     end
   end
   ```
+  
 </details>
 
 
@@ -214,12 +220,14 @@ When you create an application in development, you typically want some mock data
 Back in Atom, add some seed data to `db/seeds.rb`:
 
 ```ruby
+
 #
 # db/seeds.rb
 #
 
 Creature.create({name: "Luke", description: "Jedi"})
 Creature.create({name: "Darth Vader", description: "Father of Luke"})
+
 ```
 
 In the Terminal (not inside rails console!), run `rails db:seed`. Note that the seed file will also run every time you run `rails db:reset` to reset your database.
@@ -233,6 +241,7 @@ Inside your creatures index view, iterate through all the creatures in the datab
 <details>
   <summary>Here's one way that could look:</summary>
   <p>
+  
   ```html
   <!-- app/views/creatures/index.html.erb -->
 
@@ -243,6 +252,7 @@ Inside your creatures index view, iterate through all the creatures in the datab
     </p>
   <% end %>
   ```
+  
   </p>
 </details>
 <br>
@@ -254,6 +264,7 @@ Bootstrap is set up in this project, but it's not used yet.  In your application
 <details>
   <summary>Here's one way that could look:</summary>
   <p>
+  
   ```html
   <!-- app/views/layouts/application.html.erb -->
   <!--  ...  -->
@@ -267,6 +278,7 @@ Bootstrap is set up in this project, but it's not used yet.  In your application
     </div>
   </body>
   ```
+  
   </p>
 </details>
 <br>
@@ -286,6 +298,7 @@ The Rails convention is to make a form for new creatures at the `/creatures/new`
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   #/config/routes.rb
@@ -298,6 +311,7 @@ The Rails convention is to make a form for new creatures at the `/creatures/new`
     get "/creatures/new", to: "creatures#new", as: "new_creature"
   end
   ```
+  
   </p>
 </details>
 <br>
@@ -309,6 +323,7 @@ When a user sends a GET request to `/creatures/new`, your server will search for
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # app/controllers/creatures_controller.rb
@@ -325,6 +340,7 @@ When a user sends a GET request to `/creatures/new`, your server will search for
 
   end
   ```
+  
   </p>
 </details>
 
@@ -335,6 +351,7 @@ Create the view `new.html.erb` inside the `app/views/creatures` folder. On this 
 <details>
   <summary>Here's one way that could look:</summary>
   <p>
+  
   ```html
   <!-- app/views/creatures/new.html.erb -->
 
@@ -344,6 +361,7 @@ Create the view `new.html.erb` inside the `app/views/creatures` folder. On this 
     <%= f.submit "Save Creature" %>
   <% end %>
   ```
+  
   </p>
 </details>
 
@@ -373,6 +391,7 @@ Your new creature form has `action="/creatures"` and `method="POST"`. The `POST 
 
   end
   ```
+  
   </p>
 </details>
 
@@ -410,6 +429,7 @@ The `POST /creatures` maps to the `creatures#create` controller action, so the n
     end
   end
   ```
+  
   </p>
 </details>
 
@@ -438,6 +458,7 @@ Update your `creatures#new` action to send a new instance of a `Creature` to the
 
   end
   ```
+  
   </p>
 </details>
 
@@ -446,6 +467,7 @@ This sets `@creature` to a new instance of a `Creature`, which is automatically 
 <details>
   <summary>It might look something like this:</summary>
   <p>
+  
   ```html
   <!-- app/views/creatures/new.html.erb -->
 
@@ -455,6 +477,7 @@ This sets `@creature` to a new instance of a `Creature`, which is automatically 
     <%= f.submit "Save Creature" %>
   <% end %>
   ```
+  
   </p>
 </details>
 
@@ -469,6 +492,7 @@ First, define a `show` route.
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # config/routes.rb
@@ -483,6 +507,7 @@ First, define a `show` route.
     get "/creatures/:id", to: "creatures#show", as: "creature"
   end
   ```
+  
   </p>
 </details>
 
@@ -516,6 +541,7 @@ Now that you have your `show` route, set up the controller action for `creatures
 
   end
   ```
+  
   </p>
 </details>
 
@@ -524,12 +550,14 @@ Next, create the view to display a single creature:
 <details>
   <summary>It might look like this:</summary>
   <p>
+  
   ```html
   <!-- app/views/creatures/show.html.erb -->
 
   <h3><%= @creature.name %></h3>
   <p><%=  @creature.description %></p>
   ```
+  
   </p>
 </details>
 
@@ -540,6 +568,7 @@ The `creatures#create` method currently redirects to `/creatures`. Again, this i
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # app/controllers/creatures_controller.rb
@@ -568,6 +597,7 @@ The `creatures#create` method currently redirects to `/creatures`. Again, this i
 
   end
   ```
+  
   </p>
 </details>
 
@@ -591,6 +621,7 @@ Editing a specific creature requires two methods:
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # config/routes.rb
@@ -606,6 +637,7 @@ Editing a specific creature requires two methods:
     get "/creatures/:id/edit", to: "creatures#edit", as: "edit_creature"
   end
   ```
+  
   </p>
 </details>
 
@@ -616,6 +648,7 @@ Using your `creatures#new` and `creatures#show` method as inspiration, you can w
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # app/controllers/creatures_controller.rb
@@ -640,6 +673,7 @@ Using your `creatures#new` and `creatures#show` method as inspiration, you can w
 
   end
   ```
+  
   </p>
 </details>
 
@@ -650,6 +684,7 @@ Create an `edit.html.erb` view inside `views/creatures`. Jump-start the edit for
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```html
   <!-- app/views/creatures/edit.html.erb -->
 
@@ -659,6 +694,7 @@ Create an `edit.html.erb` view inside `views/creatures`. Jump-start the edit for
     <%= f.submit "Save Creature" %>
   <% end %>
   ```
+  
   </p>
 </details>
 
@@ -671,6 +707,7 @@ The update route will use the `id` of the creature to be updated. In Express, yo
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # config/routes.rb
@@ -687,6 +724,7 @@ The update route will use the `id` of the creature to be updated. In Express, yo
     patch "/creatures/:id", to: "creatures#update"
   end
   ```
+  
   </p>
 </details>
 
@@ -731,6 +769,7 @@ In the `CreaturesController`, define an `update` method:
 
   end
   ```
+  
   </p>
 </details>
 
@@ -818,6 +857,7 @@ Following a similar pattern to our other routes, create a route to `destroy` (de
     delete "/creatures/:id", to: "creatures#destroy"
   end
   ```
+  
   </p>
 </details>
 
@@ -831,6 +871,7 @@ In the `CreaturesController`, define an `destroy` method:
 <details>
   <summary>Hint:</summary>
   <p>
+  
   ```ruby
   #
   # app/controllers/creatures_controller.rb
@@ -860,6 +901,7 @@ In the `CreaturesController`, define an `destroy` method:
 
   end
   ```
+  
   </p>
 </details>
 
@@ -877,6 +919,7 @@ Add a delete button to the view that displays a single creature:
 <p><%=  @creature.description %></p>
 <%= button_to "Delete", @creature, method: :delete %>
 ```
+
   </p>
 </details>
 
